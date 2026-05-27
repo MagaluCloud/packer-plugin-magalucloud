@@ -3,7 +3,7 @@ module github.com/MagaluCloud/packer-plugin-magalucloud
 go 1.25.6
 
 require (
-	github.com/MagaluCloud/mgc-sdk-go v1.11.0
+	github.com/MagaluCloud/mgc-sdk-go v1.14.0
 	github.com/hashicorp/hcl/v2 v2.24.0
 	github.com/hashicorp/packer-plugin-sdk v0.6.7
 	github.com/zclconf/go-cty v1.17.0
