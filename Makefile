@@ -29,6 +29,12 @@ dev: gen
 	go build -ldflags="-X '$(PLUGIN_FQN)/version.VersionPrerelease=dev'" -o $(BINARY)
 	packer plugins install --path $(BINARY) "$(shell echo "$(PLUGIN_FQN)" | sed 's/packer-plugin-//')"
 
+fmt:
+	@gofmt -s -l -w .
+
+lint:
+	@gofmt -s -l . | grep ^ && { echo "run 'make fmt' to fix code formatting"; exit 1; } || go vet ./...
+
 test:
 	@go test -race -count $(COUNT) $(TEST) -timeout=5m
 
@@ -36,13 +42,16 @@ $(IMAGE_FILE):
 	@curl -sL $(IMAGE_URL) -o $@
 
 tools:
-	@go install $(PACKER_SDC)
+	@command -v packer-sdc >/dev/null 2>&1 || go install $(PACKER_SDC)
 
 testacc: $(IMAGE_FILE) tools dev
 	@PACKER_ACC=1 go test -count $(COUNT) -v $(TEST) -timeout=120m
 
 plugin-check: tools build
 	@packer-sdc plugin-check $(BINARY)
+
+before-commit: fmt lint test docs plugin-check
+	@git status --porcelain | grep -E '^.[M?]' && { echo "git: dirty working directory"; exit 1; } || true
 
 .env:
 	@cp .env.example $@
