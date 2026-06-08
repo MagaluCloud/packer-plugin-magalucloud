@@ -55,5 +55,17 @@ For more information on how to configure the plugin, please read the documentati
 
 ## Contributing
 
-- If you think you've found a bug in the code or you have a question regarding the usage of this software, please reach out to us by opening an issue in this repository.
-- Contributions to this project are welcome: if you want to add a feature or a fix a bug, please do so by opening a Pull Request in this repository. In case of feature contribution, we kindly ask you to open an issue to discuss it beforehand.
+We welcome contributions to the Magalu Cloud Packer plugin!
+
+1. **Report Issues**: Found a bug or have a feature request? [Open an issue](https://github.com/MagaluCloud/packer-plugin-magalucloud/pulls)
+
+2. **Submit PRs**: Contributions via pull requests are welcome. Please:
+
+   - Fork the repository
+   - Run `make env` to configure local environment
+   - Create a feature branch
+   - Make your changes
+   - Run `make before-commit` to verify
+   - Submit a PR
+
+3. **Join Discussions**: Participate in our [Discussions Forum](https://github.com/MagaluCloud/packer-plugin-magalucloud/discussions)
