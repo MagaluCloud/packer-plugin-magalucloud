@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v6
       - name: Setup Go Environment
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v7
         with:
           go-version-file: go.mod
       - name: Setup Packer
@@ -47,7 +47,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup Go Environment
-        uses: actions/setup-go@v6
+        uses: actions/setup-go@v7
         with:
           go-version-file: go.mod
       - name: Describe Plugin
